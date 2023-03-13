@@ -1,0 +1,7 @@
+
+.film{
+  display: flex;
+}
+.film h1{
+  display: block;
+} 
