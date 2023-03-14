@@ -1,10 +1,10 @@
 import './App.css';
-import FilmsList from './components/FilmsList';
+import MoviesListGenres from './components/MoviesListGenres';
 
 function App() {
   return (
     <div className="App">
-      <FilmsList />
+      <MoviesListGenres />
     </div>
   );
 }

@@ -1,0 +1,90 @@
+
+
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+  
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+.section{
+    position: relative;
+    padding:  0 1rem;
+    
+    
+  }
+.movieListConteiner{
+  position: relative;
+  display: flex;
+  overflow-x: scroll;
+  font-family: 'Roboto', sans-serif;  
+  align-items: center;
+
+  
+}
+.movieListConteiner::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+.section h1{
+  color: #fff;
+  font-size: 2rem;
+  text-transform: uppercase;
+  margin-bottom: 0; 
+} 
+.genreSection p{
+  color: #777;
+  font-size: 1rem;
+  text-transform: uppercase;
+
+} 
+.movieListContent img:hover{
+  transform: scale(1);
+}
+.movieListContent img{
+  transform: scale(.9);
+  width: 200px;
+  height:100%;
+  object-fit:cover;
+  transition: .4s;
+}
+
+.arrouNavLeft, .arrouNavRight{
+  opacity: 0;
+  transition: .4s;
+  position:absolute ;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  top:38px;
+  width:40px;
+  height:90%;
+  border-radius: 100px  0  0 100px;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1;
+  cursor: pointer;
+  
+}
+.section:hover .arrouNavLeft, .section:hover .arrouNavRight  { 
+  opacity: 1;
+}
+.arrouNavRight{
+  scale: -1;
+  right: 0px;
+}
+/* .arrouNavLeft{ 
+  left: -40px;
+} */
+.arrouNavRight img, .arrouNavLeft img{
+  width:30px;
+  height: 30px;
+  object-fit: cover;
+
+}
+a, button, img{
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+
