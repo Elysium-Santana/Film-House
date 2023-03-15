@@ -8,15 +8,14 @@
 
 .section{
     position: relative;
-    padding:  0 1rem;
+    padding:  0 3rem 0 2.3rem;
     
     
   }
 .movieListConteiner{
   position: relative;
   display: flex;
-  overflow-x: scroll;
-   
+  overflow-x: scroll;   
   align-items: center;
 
   
@@ -70,10 +69,12 @@
 }
 .arrouNavRight{
   scale: -1;
-  right: -33px;
+  right: 0px;
+  /* right: -33px; */
 }
 .arrouNavLeft{ 
-  left: -24px;
+  left: 0px;
+  /* left: -24px; */
 }
 .arrouNavRight img, .arrouNavLeft img{
   width:30px;
