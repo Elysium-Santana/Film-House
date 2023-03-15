@@ -19,7 +19,7 @@ export default {
       {
         genreName: 'Netflix',
         films: await request(
-          `/discover/tv?with_network=212&language=pt-BR&page=2&api_key=${apiKey}`,
+          `/discover/tv?with_network=212&language=pt-BR&page=4&api_key=${apiKey}`,
         ),
       },
       {

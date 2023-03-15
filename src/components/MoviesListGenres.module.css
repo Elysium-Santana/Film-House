@@ -58,10 +58,11 @@
   top:38px;
   width:40px;
   height:90%;
-  border-radius: 100px  0  0 100px;
-  background-color: rgba(0, 0, 0, 0.8);
+  /* border-radius: 100px  0  0 100px; */
+  background-color: rgba(255, 255, 255, 0.2);
   z-index: 1;
   cursor: pointer;
+  user-select: none;
   
 }
 .section:hover .arrouNavLeft, .section:hover .arrouNavRight  { 
@@ -69,11 +70,11 @@
 }
 .arrouNavRight{
   scale: -1;
-  right: 0px;
+  right: -33px;
 }
-/* .arrouNavLeft{ 
-  left: -40px;
-} */
+.arrouNavLeft{ 
+  left: -24px;
+}
 .arrouNavRight img, .arrouNavLeft img{
   width:30px;
   height: 30px;

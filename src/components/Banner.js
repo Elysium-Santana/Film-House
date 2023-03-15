@@ -4,8 +4,8 @@ import styles from './Banner.module.css';
 
 const Banner = () => {
   const [data, setData] = useState(null);
-  const [destakMovies, setDestakMovies] = useState([]);
-  const [slideIndex, setSlideIndex] = useState(2);
+  const [emphasisMovies, setemphasisMovies] = useState([]);
+  const [slideIndex, setSlideIndex] = useState(0);
   const { getFilms, aboutMoreWithId } = api;
   useEffect(() => {
     async function getAllFilms() {
@@ -13,35 +13,44 @@ const Banner = () => {
       setData(getAll);
     }
     getAllFilms();
+  }, [getFilms]);
+
+  useEffect(() => {
     createArraySelection();
 
     async function createArraySelection() {
-      let destakMoviesArray = [];
+      let emphasisMoviesArray = [];
       if (data) {
         const arrayFilms = data[0].films.json.results;
 
-        while (destakMoviesArray.length < 5) {
+        while (emphasisMoviesArray.length < 7) {
           const aleatoryNumber = Math.floor(Math.random() * arrayFilms.length);
-          if (!destakMoviesArray.includes(arrayFilms[aleatoryNumber])) {
-            destakMoviesArray.push({
+          if (!emphasisMoviesArray.includes(arrayFilms[aleatoryNumber])) {
+            emphasisMoviesArray.push({
               movie: arrayFilms[aleatoryNumber],
               moreDetails: await aboutMoreWithId('136283'),
             });
           }
         }
-        console.log(arrayFilms);
-        setDestakMovies(destakMoviesArray);
+        setemphasisMovies(emphasisMoviesArray);
       }
     }
-  }, [!!data]);
-  console.log(destakMovies);
+    const timeSlide = setInterval(() => {
+      setSlideIndex((slideIndex) => (slideIndex < 6 ? slideIndex + 1 : 0));
+    }, 3000);
+
+    return () => clearInterval(timeSlide);
+  }, [data, aboutMoreWithId]);
+
+  // console.log(emphasisMovies, slideIndex);
 
   return (
     <div className={styles.bannerConteiner}>
       <div className={styles.verticalShadow}></div>
       <div className={styles.horizontalShadow}></div>
-      {destakMovies &&
-        destakMovies.map((i, index) => {
+
+      {emphasisMovies &&
+        emphasisMovies.map((i, index) => {
           if (slideIndex === index) {
             return (
               <div key={i.movie.id}>
@@ -57,6 +66,14 @@ const Banner = () => {
             );
           }
         })}
+      <div className={styles.statusBar}>
+        {emphasisMovies.map((item, index) => (
+          <span
+            key={index}
+            className={slideIndex === index ? styles.active : ''}
+          ></span>
+        ))}
+      </div>
     </div>
   );
 };
