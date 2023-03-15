@@ -11,7 +11,7 @@ async function request(endPoit) {
   } catch (err) {
     console.log(err.message);
   }
-  return { json: json.results, request };
+  return { json, request };
 }
 export default {
   getFilms: async () => {
@@ -19,7 +19,7 @@ export default {
       {
         genreName: 'Netflix',
         films: await request(
-          `/discover/tv?with_network=212&language=pt-BR&api_key=${apiKey}`,
+          `/discover/tv?with_network=212&language=pt-BR&page=2&api_key=${apiKey}`,
         ),
       },
       {
@@ -65,5 +65,12 @@ export default {
         ),
       },
     ];
+  },
+  aboutMoreWithId: async (id, type) => {
+    return {
+      detailsWithId: await request(
+        `/tv/${id}?api_key=${apiKey}&language=en-US`,
+      ),
+    };
   },
 };

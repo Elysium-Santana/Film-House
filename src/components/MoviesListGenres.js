@@ -9,12 +9,12 @@ const MoviesListGenres = () => {
     async function getAllFilms() {
       const { getFilms } = api;
       const getAll = await getFilms();
-      console.log(getAll);
       setData(getAll);
+      return getAll;
     }
     getAllFilms();
+    console.log(data);
   }, []);
-  console.log(data);
 
   return (
     <section>

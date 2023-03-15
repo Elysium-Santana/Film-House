@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef } from 'react';
 import arrow from '../img/arrow.svg';
 import styles from './MoviesListGenres.module.css';
 
@@ -8,7 +8,6 @@ const MovieList = ({ genre }) => {
   function handleMove(side) {
     const scrollRef = divScroll.current;
     const positionX = scrollRef.scrollLeft;
-    console.log(positionX);
 
     if (side === 'left') {
       let x = positionX - 600;
@@ -44,7 +43,7 @@ const MovieList = ({ genre }) => {
         // style={{ marginLeft: `${positionX}px` }}
         className={styles.movieListConteiner}
       >
-        {genre.films.json.map(({ id, poster_path, original_name }) => (
+        {genre.films.json.results.map(({ id, poster_path, original_name }) => (
           <div className={styles.movieListContent} key={id}>
             <img
               src={`https://image.tmdb.org/t/p/w300${poster_path}`}
