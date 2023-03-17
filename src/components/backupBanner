@@ -1,0 +1,105 @@
+// import React, { useEffect, useState } from 'react';
+// import api from '../api';
+// import styles from './Banner.module.css';
+
+// const Banner = () => {
+//   const [data, setData] = useState(null);
+//   const [emphasisMovies, setemphasisMovies] = useState([]);
+//   const [slideIndex, setSlideIndex] = useState(0);
+//   const { getFilms, aboutMoreWithId } = api;
+//   useEffect(() => {
+//     async function getAllFilms() {
+//       const getAll = await getFilms();
+//       setData(getAll);
+//     }
+//     getAllFilms();
+//   }, [getFilms]);
+
+//   useEffect(() => {
+//     createArraySelection();
+
+//     async function createArraySelection() {
+//       let emphasisMoviesArray = [];
+//       if (data) {
+//         const arrayFilms = data[0].films.json.results;
+
+//         while (emphasisMoviesArray.length < 7) {
+//           const aleatoryNumber = Math.floor(Math.random() * arrayFilms.length);
+//           if (!emphasisMoviesArray.includes(arrayFilms[aleatoryNumber])) {
+//             emphasisMoviesArray.push({
+//               movie: arrayFilms[aleatoryNumber],
+//               moreDetails: await aboutMoreWithId(arrayFilms[aleatoryNumber].id),
+//             });
+//           }
+//         }
+//         setemphasisMovies(emphasisMoviesArray);
+//         console.log(emphasisMovies);
+//       }
+//     }
+//     const timeSlide = setInterval(() => {
+//       setSlideIndex((slideIndex) => (slideIndex < 6 ? slideIndex + 1 : 0));
+//     }, 3000);
+//     return () => clearInterval(timeSlide);
+//   }, [data, aboutMoreWithId]);
+
+//   return (
+//     <div className={styles.bannerConteiner}>
+//       <div className={styles.verticalShadow}></div>
+//       <div className={styles.horizontalShadow}></div>
+
+//       {emphasisMovies &&
+//         emphasisMovies.map(({ movie, moreDetails }, index) => {
+//           if (slideIndex === index) {
+//             let year = new Date(
+//               moreDetails.detailsWithId.json.seasons[0].air_date,
+//             );
+//             return (
+//               <div key={movie.id}>
+//                 <h1>{movie.name}</h1>
+//                 <div
+//                   style={{
+//                     display: 'flex',
+//                     gap: '1rem',
+//                     marginBottom: '1rem',
+//                     fontSize: '1.2rem',
+//                   }}
+//                 >
+//                   <div
+//                     className={styles.points}
+//                     style={{ color: 'rgb(255,255,255,0.5)' }}
+//                   >
+//                     Avaliação: {movie.vote_average}
+//                   </div>
+//                   <div>{year.getFullYear()}</div>
+//                   <div className={styles.seasons}>
+//                     {moreDetails.detailsWithId.json.number_of_seasons}
+//                     {moreDetails.detailsWithId.json.number_of_seasons > 1
+//                       ? ' Temporadas'
+//                       : ' Temporada'}
+//                   </div>
+//                 </div>
+//                 <p>{movie.overview}</p>
+//                 <div className={styles.imgBox}>
+//                   <img
+//                     src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
+//                     alt={movie.original_name}
+//                   />
+//                 </div>
+//               </div>
+//             );
+//           }
+//           return null;
+//         })}
+//       <div className={styles.statusBar}>
+//         {emphasisMovies.map((item, index) => (
+//           <span
+//             key={index}
+//             className={slideIndex === index ? styles.active : ''}
+//           ></span>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Banner;

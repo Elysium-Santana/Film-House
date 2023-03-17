@@ -40,7 +40,6 @@ const MovieList = ({ genre }) => {
           scrollBehavior: 'smooth',
           transition: 'scroll-behavior 1s ease',
         }}
-        // style={{ marginLeft: `${positionX}px` }}
         className={styles.movieListConteiner}
       >
         {genre.films.json.results.map(({ id, poster_path, original_name }) => (

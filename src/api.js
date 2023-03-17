@@ -17,7 +17,7 @@ export default {
   getFilms: async () => {
     return [
       {
-        genreName: 'Netflix',
+        genreName: 'Séries',
         films: await request(
           `/discover/tv?with_network=212&language=pt-BR&page=4&api_key=${apiKey}`,
         ),
@@ -69,7 +69,7 @@ export default {
   aboutMoreWithId: async (id, type) => {
     return {
       detailsWithId: await request(
-        `/tv/${id}?api_key=${apiKey}&language=en-US`,
+        `/tv/${id}?api_key=${apiKey}&language=pt-BR`,
       ),
     };
   },

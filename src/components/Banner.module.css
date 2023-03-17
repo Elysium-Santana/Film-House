@@ -1,3 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;1,300&display=swap');
+
+.bannerItem button{
+  padding: 1rem 3rem;
+  border: none;
+  margin-right: 1.5rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+  font-family: 'Roboto', sans-serif;
+  color:rgba(0, 0, 0, 0.6);
+  border-radius: 5px;
+  background-color:#eee;
+}
+.bannerItem{
+  pointer-events: none;
+  position: absolute;
+  opacity: 0;
+  width:100% ;
+  height:100% ;
+  transition: 2s;
+  display: flex;
+  flex-direction: column;
+  padding: 3rem;
+  justify-content: space-around;
+}
+.bannerItem.active{
+  pointer-events:initial;  
+  opacity: 1;
+}
+
 .imgBox img{
   /* display: block; */
   width: 100%;
@@ -16,19 +46,17 @@
   width: 100%;
   height: 500px;
   color: #fff;
-  display: flex;
-  padding: 2rem;
-  align-items: center;
+  
 }
 .bannerConteiner h1{
-  font-size:  3rem;
+  font-size:  2.5rem;
   text-transform: uppercase;
   width: 18ch;
   line-height: 1.1;
   margin-bottom: 1rem;
 }
 .bannerConteiner p{
-  font-size:  1rem;
+  font-size:  1.2rem;
   width: 50ch;
   font-weight: 400;
   color: #ddd;
@@ -80,7 +108,7 @@
   display: block;
   background: rgba(255, 255, 255, 0.7);
   transform: translate(-100%) ; 
-  animation: animeStatusBar 3s forwards linear; 
+  animation: animeStatusBar 5s forwards linear; 
 }
 @keyframes animeStatusBar{
   to{
