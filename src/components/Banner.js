@@ -22,20 +22,32 @@ const Banner = () => {
       let emphasisMoviesArray = [];
       if (data) {
         const arrayFilms = data[0].films.json.results;
+        const usedIds = [];
 
         while (emphasisMoviesArray.length < 7) {
           const aleatoryNumber = Math.floor(Math.random() * arrayFilms.length);
-          if (!emphasisMoviesArray.includes(arrayFilms[aleatoryNumber].id)) {
+          const selectedFilm = arrayFilms[aleatoryNumber];
+
+          if (
+            !emphasisMoviesArray.some(
+              (item) => item.movie.name === selectedFilm.name,
+            ) &&
+            !usedIds.includes(selectedFilm.id)
+          ) {
             emphasisMoviesArray.push({
-              movie: arrayFilms[aleatoryNumber],
-              moreDetails: await aboutMoreWithId(arrayFilms[aleatoryNumber].id),
+              movie: selectedFilm,
+              moreDetails: await aboutMoreWithId(selectedFilm.id),
             });
+
+            usedIds.push(selectedFilm.id);
           }
         }
+
         console.log(emphasisMovies);
         setemphasisMovies(emphasisMoviesArray);
       }
     }
+
     const timeSlide = setInterval(() => {
       setSlideIndex((slideIndex) => (slideIndex < 6 ? slideIndex + 1 : 0));
     }, 5000);
@@ -55,7 +67,7 @@ const Banner = () => {
           );
           return (
             <div
-              // key={movie.name}
+              key={movie.id}
               className={`${styles.bannerItem} ${
                 slideIndex === index ? styles.active : ''
               }`}
@@ -88,18 +100,20 @@ const Banner = () => {
 
               <div
                 style={{
-                  marginTop: '1rem',
+                  marginBottom: '1rem ',
                   fontSize: '1.2rem',
                   color: 'rgb(255,255,255,0.5)',
                 }}
               >
                 Gêneros:
                 {moreDetails.detailsWithId.json.genres.map(({ name }) => (
-                  <span style={{ marginLeft: '.3rem' }}>{name}</span>
+                  <span key={name} style={{ marginLeft: '.3rem' }}>
+                    {name}
+                  </span>
                 ))}
               </div>
 
-              <div style={{ position: 'absolute', bottom: '20px' }}>
+              <div>
                 <button>Assistir</button>
                 <button>Favorito</button>
               </div>
@@ -114,8 +128,6 @@ const Banner = () => {
               </div>
             </div>
           );
-
-          return null;
         })}
       <div className={styles.statusBar}>
         {emphasisMovies.map((item, index) => (

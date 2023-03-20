@@ -8,7 +8,7 @@
 
 .section{
     position: relative;
-    padding:  0 3rem 0 2.3rem;
+    padding:  0 3rem;
     
     
   }
@@ -17,7 +17,7 @@
   display: flex;
   overflow-x: scroll;   
   align-items: center;
-
+  /* background-color:rgba(255, 255, 255, 0.1) ; */
   
 }
 .movieListConteiner::-webkit-scrollbar {
@@ -29,6 +29,7 @@
   font-size: 2rem;
   text-transform: uppercase;
   margin-bottom: 0; 
+  margin-left: .5rem;
 } 
 .genreSection p{
   color: #777;
@@ -57,7 +58,6 @@
   top:38px;
   width:40px;
   height:90%;
-  /* border-radius: 100px  0  0 100px; */
   background-color: rgba(255, 255, 255, 0.2);
   z-index: 1;
   cursor: pointer;
@@ -70,11 +70,9 @@
 .arrouNavRight{
   scale: -1;
   right: 0px;
-  /* right: -33px; */
 }
 .arrouNavLeft{ 
   left: 0px;
-  /* left: -24px; */
 }
 .arrouNavRight img, .arrouNavLeft img{
   width:30px;
