@@ -1,0 +1,37 @@
+.genreMovieContent{
+  max-width: 100%;
+  display: grid;
+  grid-template-columns:repeat(4, 1fr);
+}
+.genreSection .link{
+  display: block;
+  color: #fff;
+  font-size: 2rem;
+  text-transform: uppercase;
+  margin-left: 2rem;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  margin-bottom: 2rem;
+  
+
+}
+.genreSection h1{
+  display: block;
+  margin-right: 4rem;
+  text-transform: uppercase;
+  font-size: 3rem;
+  justify-self: right;
+  text-align: right;
+  color: rgba(255, 255, 255, 0.2);
+}
+.genreMovieContent img{
+  transition: .4s;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(.9);
+}
+.genreMovieContent img:hover{
+  transform: scale(1);
+
+}

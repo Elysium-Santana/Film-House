@@ -7,9 +7,7 @@
   }
 
 .section{
-    position: relative;
-    padding:  0 3rem;
-    
+    position: relative;  
     
   }
 .movieListConteiner{
@@ -17,19 +15,20 @@
   display: flex;
   overflow-x: scroll;   
   align-items: center;
-  /* background-color:rgba(255, 255, 255, 0.1) ; */
   
 }
 .movieListConteiner::-webkit-scrollbar {
   width: 0;
   height: 0;
 }
-.section h1{
+.section .link{
   color: #fff;
   font-size: 2rem;
   text-transform: uppercase;
   margin-bottom: 0; 
-  margin-left: .5rem;
+  margin-left: 2rem;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
 } 
 .genreSection p{
   color: #777;
@@ -58,7 +57,7 @@
   top:38px;
   width:40px;
   height:90%;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.4);
   z-index: 1;
   cursor: pointer;
   user-select: none;

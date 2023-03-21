@@ -42,7 +42,8 @@
   position: relative;
   overflow-y: hidden;
   padding-bottom: 3rem;
-  width: 100%;
+  width:100%;
+  margin: 0 auto;
   height: 500px;
   color: #fff;
   
@@ -73,7 +74,7 @@
 .horizontalShadow{
   width: inherit;
   height: inherit;
-  background: linear-gradient(to left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9)70%);
+  background: linear-gradient(to left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8)70%);
 
   position: absolute;
   top: 0;

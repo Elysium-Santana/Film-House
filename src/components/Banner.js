@@ -2,57 +2,47 @@ import React, { useEffect, useState } from 'react';
 import api from '../api';
 import styles from './Banner.module.css';
 
-const Banner = () => {
-  const [data, setData] = useState(null);
+const Banner = ({ data }) => {
   const [emphasisMovies, setemphasisMovies] = useState([]);
   const [slideIndex, setSlideIndex] = useState(0);
-  const { getFilms, aboutMoreWithId } = api;
-  useEffect(() => {
-    async function getAllFilms() {
-      const getAll = await getFilms();
-      setData(getAll);
-    }
-    getAllFilms();
-  }, [getFilms]);
+  const { aboutMoreWithId } = api;
 
   useEffect(() => {
-    createArraySelection();
-
     async function createArraySelection() {
       let emphasisMoviesArray = [];
-      if (data) {
-        const arrayFilms = data[0].films.json.results;
-        const usedIds = [];
+      const arrayFilms = await data[0].films.json.results;
+      const usedIds = [];
 
-        while (emphasisMoviesArray.length < 7) {
-          const aleatoryNumber = Math.floor(Math.random() * arrayFilms.length);
-          const selectedFilm = arrayFilms[aleatoryNumber];
+      while (emphasisMoviesArray.length < 7) {
+        const aleatoryNumber = Math.floor(Math.random() * arrayFilms.length);
+        const selectedFilm = arrayFilms[aleatoryNumber];
 
-          if (
-            !emphasisMoviesArray.some(
-              (item) => item.movie.name === selectedFilm.name,
-            ) &&
-            !usedIds.includes(selectedFilm.id)
-          ) {
-            emphasisMoviesArray.push({
-              movie: selectedFilm,
-              moreDetails: await aboutMoreWithId(selectedFilm.id),
-            });
+        if (
+          !emphasisMoviesArray.some(
+            (item) => item.movie.name === selectedFilm.name,
+          ) &&
+          !usedIds.includes(selectedFilm.id)
+        ) {
+          emphasisMoviesArray.push({
+            movie: selectedFilm,
+            moreDetails: await aboutMoreWithId(selectedFilm.id),
+          });
 
-            usedIds.push(selectedFilm.id);
-          }
+          usedIds.push(selectedFilm.id);
         }
-
-        console.log(emphasisMovies);
-        setemphasisMovies(emphasisMoviesArray);
       }
+
+      setemphasisMovies(emphasisMoviesArray);
+    }
+    if (data) {
+      createArraySelection();
     }
 
     const timeSlide = setInterval(() => {
       setSlideIndex((slideIndex) => (slideIndex < 6 ? slideIndex + 1 : 0));
     }, 5000);
     return () => clearInterval(timeSlide);
-  }, [data, aboutMoreWithId]);
+  }, [data]);
 
   return (
     <div className={styles.bannerConteiner}>

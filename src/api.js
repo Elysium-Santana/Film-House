@@ -17,49 +17,57 @@ export default {
   getFilms: async () => {
     return [
       {
+        pathName: 'sessions',
         genreName: 'Séries',
         films: await request(
           `/discover/tv?with_network=212&language=pt-BR&page=4&api_key=${apiKey}`,
         ),
       },
       {
+        pathName: 'recomendado',
         genreName: 'Recomendado',
         films: await request(
           `/trending/all/week?language=pt-BR&api_key=${apiKey}`,
         ),
       },
       {
+        pathName: 'trending',
         genreName: 'Em Alta',
         films: await request(
           `/movie/top_rated?language=pt-BR&api_key=${apiKey}`,
         ),
       },
       {
+        pathName: 'action',
         genreName: 'Ação',
         films: await request(
           `/discover/movie?with_genres=28&language=pt-BR&api_key=${apiKey}`,
         ),
       },
       {
+        pathName: 'comedy',
         genreName: 'Comédia',
         films: await request(
           `/discover/movie?with_genres=35&language=pt-BR&api_key=${apiKey}`,
         ),
       },
       {
+        pathName: 'romance',
         genreName: 'Romance',
         films: await request(
           `/discover/movie?with_genres=10749&language=pt-BR&api_key=${apiKey}`,
         ),
       },
       {
+        pathName: 'horror',
         genreName: 'Terror',
         films: await request(
           `/discover/movie?with_genres=27&language=pt-BR&api_key=${apiKey}`,
         ),
       },
       {
-        genreName: 'Documentary',
+        pathName: 'documentary',
+        genreName: 'Documentarios',
         films: await request(
           `/discover/movie?with_genres=99&language=pt-BR&api_key=${apiKey}`,
         ),

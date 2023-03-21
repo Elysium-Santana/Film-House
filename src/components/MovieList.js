@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import arrow from '../img/arrow.svg';
 import styles from './MoviesListGenres.module.css';
+import { Link } from 'react-router-dom';
 
 const MovieList = ({ genre }) => {
   const divScroll = useRef(null);
@@ -26,7 +27,13 @@ const MovieList = ({ genre }) => {
 
   return (
     <section style={{ color: '#fff' }} className={styles.section}>
-      <h1>{genre.genreName}</h1>
+      <Link
+        style={{ textDecoration: 'none' }}
+        className={styles.link}
+        to={`genre/${genre.pathName}`}
+      >
+        {genre.genreName + '  >'}
+      </Link>
 
       <div className={styles.arrouNavLeft} onClick={() => handleMove('left')}>
         <img src={arrow} alt="arrowLeft" />

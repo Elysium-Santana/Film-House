@@ -1,21 +1,6 @@
-import { useState, useEffect } from 'react';
-import api from '../api';
 import MovieList from './MovieList';
 
-const MoviesListGenres = () => {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    async function getAllFilms() {
-      const { getFilms } = api;
-      const getAll = await getFilms();
-      setData(getAll);
-      return getAll;
-    }
-    getAllFilms();
-    console.log(data);
-  }, []);
-
+const MoviesListGenres = ({ data }) => {
   return (
     <section>
       {data &&
