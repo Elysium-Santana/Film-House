@@ -7,16 +7,17 @@ import api from './api';
 import GenrePage from './components/GenrePage';
 function App() {
   const [data, setData] = useState(null);
+  const [method] = useState(null);
 
   useEffect(() => {
     async function getAllFilms() {
       const { getFilms } = api;
       const getAll = await getFilms();
       setData(getAll);
+      console.log(data);
       return getAll;
     }
     getAllFilms();
-    // console.log(data);
   }, []);
   return (
     <div className="App">
@@ -24,7 +25,10 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<MoviesListGenres data={data} />} />
-          <Route path="genre/:id" element={<GenrePage data={data} />} />
+          <Route
+            path="genre/:id"
+            element={<GenrePage data={data} method={method} />}
+          />
         </Routes>
       </BrowserRouter>
     </div>

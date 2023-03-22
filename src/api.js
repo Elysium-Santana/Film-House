@@ -14,13 +14,13 @@ async function request(endPoit) {
   return { json, request };
 }
 export default {
-  getFilms: async () => {
+  getFilms: async (p) => {
     return [
       {
         pathName: 'sessions',
         genreName: 'Séries',
         films: await request(
-          `/discover/tv?with_network=212&language=pt-BR&page=4&api_key=${apiKey}`,
+          `/discover/tv?with_network=212&language=pt-BR&page=${p}&api_key=${apiKey}`,
         ),
       },
       {
@@ -34,21 +34,21 @@ export default {
         pathName: 'trending',
         genreName: 'Em Alta',
         films: await request(
-          `/movie/top_rated?language=pt-BR&api_key=${apiKey}`,
+          `/movie/top_rated?language=pt-BR&api_key=${apiKey}&page=${p}`,
         ),
       },
       {
         pathName: 'action',
         genreName: 'Ação',
         films: await request(
-          `/discover/movie?with_genres=28&language=pt-BR&api_key=${apiKey}`,
+          `/discover/movie?with_genres=28&language=pt-BR&api_key=${apiKey}&page=${p}`,
         ),
       },
       {
         pathName: 'comedy',
         genreName: 'Comédia',
         films: await request(
-          `/discover/movie?with_genres=35&language=pt-BR&api_key=${apiKey}`,
+          `/discover/movie?with_genres=35&language=pt-BR&api_key=${apiKey}&page=${p}`,
         ),
       },
       {
