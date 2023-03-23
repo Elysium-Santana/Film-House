@@ -54,11 +54,11 @@ const GenrePage = () => {
 
   return (
     <section style={{ color: '#fff' }} className={styles.genreSection}>
+      <h1>{param.id}</h1>
+
       <Link to={'/'} style={{ textDecoration: 'none' }} className={styles.link}>
         {'< '} Voltar à Página Principal
       </Link>
-
-      <h1>{param.id}</h1>
 
       <div className={styles.genreMovieContent}>
         {data &&
@@ -75,14 +75,17 @@ const GenrePage = () => {
         {pagesPrev.map((item) => (
           <button
             style={{
-              visibility: item < 1 ? 'hidden' : 'visible',
+              backgroundColor:
+                item < 1
+                  ? 'rgba(255, 255, 255, 0.05)'
+                  : 'rgba(255, 255, 255, 0.2)',
               pointerEvents: item < 1 ? 'none' : 'initial',
             }}
             key={item}
             onClick={() => fetchData(item)}
             className={styles.button}
           >
-            {item}
+            {item > 0 && item}
           </button>
         ))}
         <h1 style={{ textAlign: 'center', margin: '20px' }}>{atualPage}</h1>

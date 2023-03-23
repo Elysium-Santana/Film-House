@@ -13,63 +13,64 @@ async function request(endPoit) {
   }
   return { json, request };
 }
+
 export default {
-  getFilms: async (p) => {
+  getFilms: async (page) => {
     return [
       {
         pathName: 'sessions',
         genreName: 'Séries',
         films: await request(
-          `/discover/tv?with_network=212&language=pt-BR&page=${p}&api_key=${apiKey}`,
+          `/discover/tv?with_network=212&language=pt-BR&page=${page}&api_key=${apiKey}`,
         ),
       },
       {
-        pathName: 'recomendado',
+        pathName: 'recommended',
         genreName: 'Recomendado',
         films: await request(
-          `/trending/all/week?language=pt-BR&api_key=${apiKey}`,
+          `/movie/popular?language=pt-BR=&api_key=${apiKey}&page=${page}`,
         ),
       },
       {
         pathName: 'trending',
         genreName: 'Em Alta',
         films: await request(
-          `/movie/top_rated?language=pt-BR&api_key=${apiKey}&page=${p}`,
+          `/movie/top_rated?language=pt-BR&api_key=${apiKey}&page=${page}`,
         ),
       },
       {
         pathName: 'action',
         genreName: 'Ação',
         films: await request(
-          `/discover/movie?with_genres=28&language=pt-BR&api_key=${apiKey}&page=${p}`,
+          `/discover/movie?with_genres=28&language=pt-BR&api_key=${apiKey}&page=${page}`,
         ),
       },
       {
         pathName: 'comedy',
         genreName: 'Comédia',
         films: await request(
-          `/discover/movie?with_genres=35&language=pt-BR&api_key=${apiKey}&page=${p}`,
+          `/discover/movie?with_genres=35&language=pt-BR&api_key=${apiKey}&page=${page}`,
         ),
       },
       {
         pathName: 'romance',
         genreName: 'Romance',
         films: await request(
-          `/discover/movie?with_genres=10749&language=pt-BR&api_key=${apiKey}`,
+          `/discover/movie?with_genres=10749&language=pt-BR&api_key=${apiKey}&page=${page}`,
         ),
       },
       {
         pathName: 'horror',
         genreName: 'Terror',
         films: await request(
-          `/discover/movie?with_genres=27&language=pt-BR&api_key=${apiKey}`,
+          `/discover/movie?with_genres=27&language=pt-BR&api_key=${apiKey}&page=${page}`,
         ),
       },
       {
         pathName: 'documentary',
         genreName: 'Documentarios',
         films: await request(
-          `/discover/movie?with_genres=99&language=pt-BR&api_key=${apiKey}`,
+          `/discover/movie?with_genres=99&language=pt-BR&api_key=${apiKey}&page=${page}`,
         ),
       },
     ];
