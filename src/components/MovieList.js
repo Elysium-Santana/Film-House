@@ -1,9 +1,12 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import arrow from '../img/arrow.svg';
 import styles from './MoviesListGenres.module.css';
 import { Link } from 'react-router-dom';
+import Modal from './Modal';
 
 const MovieList = ({ genre }) => {
+  const [modal, setModal] = useState(null);
+
   const divScroll = useRef(null);
 
   function handleMove(side) {
@@ -25,8 +28,13 @@ const MovieList = ({ genre }) => {
     }
   }
 
+  function handleClick(params) {
+    setModal({ id: params });
+  }
+
   return (
     <section style={{ color: '#fff' }} className={styles.section}>
+      <Modal data={genre.films} modal={modal} setModal={setModal} />
       <Link
         style={{ textDecoration: 'none' }}
         className={styles.link}
@@ -50,7 +58,11 @@ const MovieList = ({ genre }) => {
         className={styles.movieListConteiner}
       >
         {genre.films.json.results.map(({ id, poster_path, original_name }) => (
-          <div className={styles.movieListContent} key={id}>
+          <div
+            className={styles.movieListContent}
+            key={id}
+            onClick={() => handleClick(id)}
+          >
             <img
               src={`https://image.tmdb.org/t/p/w300${poster_path}`}
               alt={original_name}

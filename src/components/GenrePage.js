@@ -3,12 +3,14 @@ import { useParams } from 'react-router-dom';
 import styles from './GenrePage.module.css';
 import { Link } from 'react-router-dom';
 import api from '../api';
+import Modal from './Modal';
 
 const GenrePage = () => {
   const [data, setData] = useState(null);
   const [pagesNext, setPagesNext] = useState([]);
   const [pagesPrev, setPagesPrev] = useState([]);
   const [atualPage, setAtualPage] = useState(null);
+  const [modal, setModal] = useState(null);
 
   const param = useParams();
 
@@ -52,8 +54,13 @@ const GenrePage = () => {
     }
   }, [atualPage]);
 
+  function handleClick(dado, par) {
+    setModal({ id: dado, param: par });
+  }
+
   return (
     <section style={{ color: '#fff' }} className={styles.genreSection}>
+      <Modal data={data} modal={modal} setModal={setModal} />
       <h1>{param.id}</h1>
 
       <Link to={'/'} style={{ textDecoration: 'none' }} className={styles.link}>
@@ -62,14 +69,20 @@ const GenrePage = () => {
 
       <div className={styles.genreMovieContent}>
         {data &&
-          data.json.results.map(({ id, poster_path, original_name }) => (
-            <div key={id} className={styles.genreMovie}>
-              <img
-                src={`https://image.tmdb.org/t/p/w300${poster_path}`}
-                alt={original_name}
-              />
-            </div>
-          ))}
+          data.json.results.map(
+            ({ id, poster_path, original_name, original_title }) => (
+              <div
+                onClick={() => handleClick(id, param.id)}
+                key={id}
+                className={styles.genreMovie}
+              >
+                <img
+                  src={`https://image.tmdb.org/t/p/w300${poster_path}`}
+                  alt={original_name ? original_name : original_title}
+                />
+              </div>
+            ),
+          )}
       </div>
       <div className={styles.buttonBox}>
         {pagesPrev.map((item) => (
