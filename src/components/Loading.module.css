@@ -1,0 +1,33 @@
+.loadingBase{
+  position: fixed;
+  top:86px; 
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index:  13;
+  display: flex;
+  align-items: center;
+  justify-content:center;
+  backdrop-filter: blur(30px);
+  transition: .4s;
+}
+
+.loadingBase h1{
+  font-size: 3rem;
+  color:#eee;
+}
+
+.loadingBase .animeTape{
+  fill: #eee;
+  animation: rotate 2s linear infinite;
+  transform-origin: center center;
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

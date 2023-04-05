@@ -5,30 +5,45 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import api from './api';
 import GenrePage from './components/GenrePage';
-import Modal from './components/Modal';
+import Loading from './components/Loading';
+import Header from './components/Header';
 
 function App() {
   const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(null);
+  const [modal, setModal] = useState(null);
+
+  const { getFilms } = api;
 
   useEffect(() => {
     async function getAllFilms() {
-      const { getFilms } = api;
-      const getAll = await getFilms();
+      setLoading(true);
+      const getAll = await getFilms(5);
       setData(getAll);
-      // console.log(data);
+      setLoading(null);
       return getAll;
     }
     getAllFilms();
   }, []);
-
   return (
     <div className="App">
-      <Banner data={data} />
+      <Header />
+      {loading && <Loading />}
+      <Banner data={data} setLoading={setLoading} />
 
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<MoviesListGenres data={data} />} />
-          <Route path="genre/:id" element={<GenrePage />} />
+          <Route
+            path="genre/:id"
+            element={
+              <GenrePage
+                setLoading={setLoading}
+                setModal={setModal}
+                modal={modal}
+              />
+            }
+          />
         </Routes>
       </BrowserRouter>
     </div>

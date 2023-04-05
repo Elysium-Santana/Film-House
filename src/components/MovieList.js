@@ -31,16 +31,31 @@ const MovieList = ({ genre }) => {
   function handleClick(params) {
     setModal({ id: params });
   }
+  // console.log(genre);
 
   return (
     <section style={{ color: '#fff' }} className={styles.section}>
       <Modal data={genre.films} modal={modal} setModal={setModal} />
       <Link
-        style={{ textDecoration: 'none' }}
+        style={{
+          textDecoration: 'none',
+          display: 'flex',
+          alignItems: 'center',
+        }}
         className={styles.link}
-        to={`genre/${genre.pathName}`}
+        to={`genre/${genre.genreName}`}
       >
-        {genre.genreName + '  >'}
+        {genre.genreName}
+        <svg
+          style={{ scale: '-1' }}
+          width="30"
+          height="30"
+          viewBox="0 0 48 48"
+          fill="#fff"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M32.8 43.9L35.6 41.05L18.45 23.9L35.6 6.75L32.8 3.9L12.8 23.9L32.8 43.9Z" />
+        </svg>
       </Link>
 
       <div className={styles.arrouNavLeft} onClick={() => handleMove('left')}>

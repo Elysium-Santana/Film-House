@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import api from '../api';
 import styles from './Banner.module.css';
 
-const Banner = ({ data }) => {
+const Banner = ({ data, setLoading }) => {
   const [emphasisMovies, setemphasisMovies] = useState([]);
   const [slideIndex, setSlideIndex] = useState(0);
   const { aboutMoreWithId } = api;
@@ -10,7 +10,9 @@ const Banner = ({ data }) => {
   useEffect(() => {
     async function createArraySelection() {
       let emphasisMoviesArray = [];
+      setLoading(true);
       const arrayFilms = await data[0].films.json.results;
+      setLoading(false);
       const usedIds = [];
 
       while (emphasisMoviesArray.length < 7) {
@@ -23,11 +25,13 @@ const Banner = ({ data }) => {
           ) &&
           !usedIds.includes(selectedFilm.id)
         ) {
+          setLoading(true);
           emphasisMoviesArray.push({
             movie: selectedFilm,
-            moreDetails: await aboutMoreWithId(selectedFilm.id),
-          });
 
+            moreDetails: await aboutMoreWithId(selectedFilm.id, 'session'),
+          });
+          setLoading(false);
           usedIds.push(selectedFilm.id);
         }
       }
@@ -68,7 +72,6 @@ const Banner = ({ data }) => {
                   display: 'flex',
                   gap: '1rem',
                   marginBottom: '1rem',
-                  fontSize: '1.2rem',
                 }}
               >
                 <div
@@ -91,7 +94,6 @@ const Banner = ({ data }) => {
               <div
                 style={{
                   marginBottom: '1rem ',
-                  fontSize: '1.2rem',
                   color: 'rgb(255,255,255,0.5)',
                 }}
               >

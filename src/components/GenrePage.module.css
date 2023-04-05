@@ -4,7 +4,7 @@
   grid-template-columns:repeat(4, 1fr);
   padding-bottom: 2rem;
 }
-.genreSection {
+.genreSection {  
   padding-bottom: 4rem;
 }
 
@@ -16,7 +16,6 @@
   margin-left: 2rem;
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
-  /* margin-bottom: 2rem; */
   
 
 }
@@ -58,4 +57,38 @@
   justify-content: center;
   align-items: center;
   gap: .5rem;  
+}
+.buttonBox h1 {
+  margin: 20px;
+  text-align: center;
+  display: inline-block;
+
+}
+
+@media (max-width:600px) {
+  .buttonBox .button{   
+    border-radius: 2px;    
+    width: 30px;
+    height: 30px;
+    font-size: 1rem;    
+  }
+  .buttonBox h1 {
+    font-size: 1.5rem; 
+    margin:8px;
+  }
+  .buttonBox {
+    gap: .2rem;  
+   }
+   .genreSection .link{    
+    font-size: 1.2rem;   
+    margin-left: 1rem;  
+  }
+  .genreSection > h1{    
+    margin-right: 2rem;    
+    font-size: 1.8rem;
+    
+    
+    
+  }
+
 }

@@ -5,12 +5,11 @@ import { Link } from 'react-router-dom';
 import api from '../api';
 import Modal from './Modal';
 
-const GenrePage = () => {
+const GenrePage = ({ setLoading, modal, setModal }) => {
   const [data, setData] = useState(null);
   const [pagesNext, setPagesNext] = useState([]);
   const [pagesPrev, setPagesPrev] = useState([]);
   const [atualPage, setAtualPage] = useState(null);
-  const [modal, setModal] = useState(null);
 
   const param = useParams();
 
@@ -20,9 +19,11 @@ const GenrePage = () => {
   let index;
 
   async function fetchData(page) {
+    setLoading(true);
     const films = await getFilms(page);
+    setLoading(null);
     setAtualPage(page);
-    index = films.findIndex((data) => data.pathName === param.id);
+    index = films.findIndex((data) => data.genreName === param.id);
     setData(films[index].films);
   }
 
@@ -63,8 +64,25 @@ const GenrePage = () => {
       <Modal data={data} modal={modal} setModal={setModal} />
       <h1>{param.id}</h1>
 
-      <Link to={'/'} style={{ textDecoration: 'none' }} className={styles.link}>
-        {'< '} Voltar à Página Principal
+      <Link
+        to={'/'}
+        style={{
+          textDecoration: 'none',
+          display: 'flex',
+          alignItems: 'center',
+        }}
+        className={styles.link}
+      >
+        <svg
+          width="30"
+          height="30"
+          viewBox="0 0 48 48"
+          fill="#fff"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M32.8 43.9L35.6 41.05L18.45 23.9L35.6 6.75L32.8 3.9L12.8 23.9L32.8 43.9Z" />
+        </svg>{' '}
+        Voltar à Página Principal
       </Link>
 
       <div className={styles.genreMovieContent}>
@@ -101,7 +119,7 @@ const GenrePage = () => {
             {item > 0 && item}
           </button>
         ))}
-        <h1 style={{ textAlign: 'center', margin: '20px' }}>{atualPage}</h1>
+        <h1 style={{ textAlign: 'center' }}>{atualPage}</h1>
         {pagesNext.map((item) => (
           <button
             key={item}

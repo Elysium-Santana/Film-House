@@ -1,13 +1,15 @@
 const API_BASE = 'https://api.themoviedb.org/3';
 const apiKey = '18eac5939442dfdfc6416078341aae6c';
 
+let response;
+let json;
 async function request(endPoit) {
-  let response;
-  let json;
   try {
     response = await fetch(`${API_BASE}${endPoit}`);
     json = await response.json();
-    if (response.ok === false) throw new Error(json.message);
+    if (response.ok === false) {
+      throw new Error(json.message);
+    }
   } catch (err) {
     console.log(err.message);
   }
@@ -76,10 +78,18 @@ export default {
     ];
   },
   aboutMoreWithId: async (id, type) => {
-    return {
-      detailsWithId: await request(
-        `/tv/${id}?api_key=${apiKey}&language=pt-BR`,
-      ),
-    };
+    if (type === 'session') {
+      return {
+        detailsWithId: await request(
+          `/tv/${id}?api_key=${apiKey}&language=pt-BR`,
+        ),
+      };
+    } else if (type === 'movie') {
+      return {
+        detailsWithId: await request(
+          `/movie/${id}?api_key=${apiKey}&language=pt-BR`,
+        ),
+      };
+    }
   },
 };

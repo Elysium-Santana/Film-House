@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import MovieList from './MovieList';
 
 const MoviesListGenres = ({ data }) => {

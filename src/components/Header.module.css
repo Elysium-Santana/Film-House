@@ -1,0 +1,27 @@
+.header{
+  position: fixed;
+  top: 0;
+  height:max-content;
+  background-color: black;
+  max-width:1400px;
+  width: 100%;
+  z-index: 12;
+  box-sizing: border-box;
+}
+
+.logo{
+  width: 250px;
+}
+.user{
+  height: 50px;
+}
+@media (max-width:600px) {
+  .logo{
+    width: 150px;
+  }
+  .user{
+    height: 40px;
+  }
+
+
+}

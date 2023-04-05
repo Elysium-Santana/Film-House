@@ -22,6 +22,7 @@
   flex-direction: column;
   padding: 3rem;
   justify-content:end;
+  font-size: 1.2rem;
 }
 .bannerItem.active{
   pointer-events:initial;  
@@ -75,7 +76,6 @@
   width: inherit;
   height: inherit;
   background: linear-gradient(to left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8)70%);
-
   position: absolute;
   top: 0;
   left: 0;
@@ -110,6 +110,34 @@
   background: rgba(255, 255, 255, 0.7);
   transform: translate(-100%) ; 
   animation: animeStatusBar 5s forwards linear; 
+}
+
+
+@media (max-width:600px) {
+  .bannerConteiner h1{
+    font-size:  2rem;
+    width: 15ch;
+  }
+  .bannerItem button{
+    padding: .5rem 1rem;   
+    margin-right: 1rem;
+    font-size: 1rem;   
+    border-radius: 3px;   
+  }
+  .bannerConteiner p{
+    font-size: 1rem;
+    max-width: 30ch;
+  }
+  .bannerItem{
+    font-size: 1rem;
+    padding: 2rem 1rem ;
+  }
+  .bannerConteiner{
+    height: 400px;
+    }
+  
+  
+  
 }
 @keyframes animeStatusBar{
   to{
