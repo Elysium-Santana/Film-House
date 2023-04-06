@@ -105,9 +105,9 @@ const Banner = ({ data, setLoading }) => {
                 ))}
               </div>
 
-              <div>
+              <div className={styles.buttonBox}>
                 <button>Assistir</button>
-                <button>Favorito</button>
+                <button>Meus Mavoritos</button>
               </div>
 
               <div className={styles.verticalShadow}></div>

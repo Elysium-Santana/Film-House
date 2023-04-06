@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;1,300&display=swap');
 
-.bannerItem button{
+/* .bannerItem button{
   padding: 1rem 3rem;
   border: none;
   margin-right: 1.5rem;
@@ -10,7 +10,7 @@
   color:rgba(0, 0, 0, 0.6);
   border-radius: 5px;
   background-color:#eee;
-}
+} */
 .bannerItem{
   pointer-events: none;
   position: absolute;
@@ -101,6 +101,31 @@
   overflow-x: hidden;
 
 }
+.buttonBox button{
+  transition: .3s;
+  padding: 1rem 4rem;
+  border: none;
+  margin-right: 1.5rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+  font-family: 'Roboto', sans-serif;
+  color:rgba(0, 0, 0, 0.8);
+  border-radius: 50px   ;
+  background-color:rgba(255, 255, 255, 0.5);
+  border: #fff 1px solid;
+}
+.buttonBox button:nth-child(2){
+  color:rgba(255, 255, 255, 0.6);
+  background-color:rgba(255, 255, 255, 0.2);
+  padding: 1rem 2.5rem;
+}
+.buttonBox button:hover{
+  background-color:rgba(255, 255, 255, 0.7)
+}
+.buttonBox button:hover:nth-child(2){
+  background-color:rgba(255, 255, 255, 0.4)
+}
+
 
 .statusBar span.active::after{
   content: '';
@@ -134,10 +159,7 @@
   }
   .bannerConteiner{
     height: 400px;
-    }
-  
-  
-  
+    }  
 }
 @keyframes animeStatusBar{
   to{

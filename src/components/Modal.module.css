@@ -58,18 +58,20 @@
 }
 
 .modalContent button{
-  padding:.5rem 1rem ;
+  transition: .3s;
   width: 100%;
-  margin-top: .5rem;
-  font-size: 1.2rem;
-  border-radius: 5px;
+  padding: .5rem 2rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color:rgba(0, 0, 0, 0.8);
+  border-radius: 50px   ;
+  background-color:rgba(255, 255, 255, 0.5);
+  border: #fff 1px solid;
+}
+.modalContent button:hover{
+  background-color:rgba(255, 255, 255, 0.7)
 
 }
-
-
-
-
-
 
 @keyframes zoom {
   0% {
@@ -97,9 +99,9 @@
     font-size: 1.3rem;
   }
   .modalContent button{
-    padding:.2rem .8rem ;
+    padding:.4rem ;
     margin-top: .3rem;
-    font-size: .8rem;  
+    font-size: 1rem;  
   }
 
 }
