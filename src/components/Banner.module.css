@@ -143,11 +143,10 @@
     font-size:  2rem;
     width: 15ch;
   }
-  .bannerItem button{
+  .bannerItem button,.buttonBox button:nth-child(2){
     padding: .5rem 1rem;   
     margin-right: 1rem;
     font-size: 1rem;   
-    border-radius: 3px;   
   }
   .bannerConteiner p{
     font-size: 1rem;
