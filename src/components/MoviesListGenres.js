@@ -3,6 +3,7 @@ import MovieList from './MovieList';
 const MoviesListGenres = ({ data, modal, setModal }) => {
   return (
     <section>
+      {(document.title = 'Film House')}
       {data &&
         data.map((genre) => (
           <MovieList

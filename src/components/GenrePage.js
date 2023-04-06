@@ -61,6 +61,7 @@ const GenrePage = ({ setLoading, modal, setModal }) => {
 
   return (
     <section style={{ color: '#fff' }} className={styles.genreSection}>
+      {(document.title = `Film House | | ${param.id}`)}
       <Modal data={data} modal={modal} setModal={setModal} />
       <h1>{param.id}</h1>
 
