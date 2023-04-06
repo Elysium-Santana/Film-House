@@ -84,7 +84,7 @@ const GenrePage = ({ setLoading, modal, setModal }) => {
         >
           <path d="M32.8 43.9L35.6 41.05L18.45 23.9L35.6 6.75L32.8 3.9L12.8 23.9L32.8 43.9Z" />
         </svg>{' '}
-        Voltar à Página Principal
+        Voltar
       </Link>
 
       <div className={styles.genreMovieContent}>
