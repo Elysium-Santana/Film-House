@@ -7,6 +7,7 @@ import api from './api';
 import GenrePage from './components/GenrePage';
 import Loading from './components/Loading';
 import Header from './components/Header';
+import Footer from './components/Footer';
 
 function App() {
   const [data, setData] = useState(null);
@@ -27,13 +28,18 @@ function App() {
   }, []);
   return (
     <div className="App">
-      <Header />
-      {loading && <Loading />}
-      <Banner data={data} setLoading={setLoading} />
-
       <BrowserRouter>
+        {!modal && !loading && <Header />}
+        {loading && <Loading />}
+        <Banner data={data} setLoading={setLoading} />
+
         <Routes>
-          <Route path="/" element={<MoviesListGenres data={data} />} />
+          <Route
+            path="/"
+            element={
+              <MoviesListGenres data={data} modal={modal} setModal={setModal} />
+            }
+          />
           <Route
             path="genre/:id"
             element={
@@ -46,6 +52,7 @@ function App() {
           />
         </Routes>
       </BrowserRouter>
+      <Footer />
     </div>
   );
 }

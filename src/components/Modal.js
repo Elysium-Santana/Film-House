@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Modal.module.css';
 import api from '../api';
+import { useParams } from 'react-router-dom';
 
-const Modal = ({ modal, data, setModal }) => {
+const Modal = ({ modal, data, setModal, setData }) => {
   const [moreDetails, setMoreDetails] = useState(null);
+  const params = useParams();
+
   let dataType;
   let indexId;
   let results;
   let details;
-
   useEffect(() => {
     const getMoreDetails = async () => {
       if (modal && dataType) {
@@ -21,14 +23,17 @@ const Modal = ({ modal, data, setModal }) => {
   }, [modal, dataType]);
 
   if (data && modal) {
-    dataType = data.json.results[0].first_air_date ? 'session' : 'movie';
     results = data.json.results;
+    dataType = data.json.results[0].first_air_date ? 'session' : 'movie';
     indexId = results.findIndex((item) => item.id === modal.id);
   }
 
   function handleClick({ target }) {
     if (target.id === 'transparent') {
       setModal(null);
+      if (Object.keys(params).length === 0) {
+        setData(null);
+      }
     }
   }
 

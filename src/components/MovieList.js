@@ -4,8 +4,8 @@ import styles from './MoviesListGenres.module.css';
 import { Link } from 'react-router-dom';
 import Modal from './Modal';
 
-const MovieList = ({ genre }) => {
-  const [modal, setModal] = useState(null);
+const MovieList = ({ genre, modal, setModal }) => {
+  const [data, setData] = useState(null);
 
   const divScroll = useRef(null);
 
@@ -30,12 +30,13 @@ const MovieList = ({ genre }) => {
 
   function handleClick(params) {
     setModal({ id: params });
+    setData(genre.films);
   }
   // console.log(genre);
 
   return (
     <section style={{ color: '#fff' }} className={styles.section}>
-      <Modal data={genre.films} modal={modal} setModal={setModal} />
+      <Modal data={data} modal={modal} setModal={setModal} setData={setData} />
       <Link
         style={{
           textDecoration: 'none',
