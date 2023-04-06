@@ -3,7 +3,7 @@
   top:0; 
   left: -16px;
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh + 16px);
   background-color: rgba(0, 0, 0, 0.3);
   z-index:  10;
   display: flex;
