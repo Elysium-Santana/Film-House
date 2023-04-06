@@ -4,6 +4,7 @@ import styles from './GenrePage.module.css';
 import { Link } from 'react-router-dom';
 import api from '../api';
 import Modal from './Modal';
+import Head from './Head';
 
 const GenrePage = ({ setLoading, modal, setModal }) => {
   const [data, setData] = useState(null);
@@ -61,7 +62,7 @@ const GenrePage = ({ setLoading, modal, setModal }) => {
 
   return (
     <section style={{ color: '#fff' }} className={styles.genreSection}>
-      {(document.title = `Film House | | ${param.id}`)}
+      <Head title={`${param.id} `} />
       <Modal data={data} modal={modal} setModal={setModal} />
       <h1>{param.id}</h1>
 

@@ -81,14 +81,15 @@
    }
    .genreSection .link{    
     font-size: 1.2rem;   
-    margin-left: 1rem;  
+    margin-left: 0;  
   }
   .genreSection > h1{    
     margin-right: 2rem;    
-    font-size: 1.8rem;
-    
-    
-    
+    font-size: 1.8rem;    
+  }
+  .link svg{
+    /* fill: red; */
+    height: 20px;
   }
 
 }

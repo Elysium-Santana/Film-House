@@ -99,6 +99,7 @@
   object-fit: cover;
 
 }
+
 a, button, img{
   -webkit-tap-highlight-color: transparent;
 }
@@ -107,6 +108,10 @@ a, button, img{
     font-size: 1.2rem;
    margin-left: 1rem;
    } 
+   .link svg{
+    /* fill: red; */
+    height: 20px;
+  }
 
 }
 

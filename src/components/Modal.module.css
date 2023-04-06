@@ -1,17 +1,15 @@
 .transparent{
   position: fixed;
-  top:0; 
+  top:-43px; 
   left: 0;
   width: 100vw;
-  /* height: calc(100vh + 16px); */
-  height: 100vh;
+  height: calc(100vh + 86px);
   background-color: rgba(0, 0, 0, 0.3);
   z-index:  10;
   display: flex;
   align-items: center;
   justify-content:center;
   backdrop-filter: blur(30px);
-  /* transition: .4s; */
 }
 .modalConteiner{ 
   width: 400px; 

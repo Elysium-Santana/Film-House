@@ -20,5 +20,9 @@ body{
   margin: 0 auto;
   position: relative;
   margin-top: 86px;
-  /* padding-top: 86px; */
+}
+@media (max-width:600px) {
+  .App{
+    margin-top: 70px;
+  }
 }

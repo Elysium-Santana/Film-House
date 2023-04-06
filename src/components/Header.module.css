@@ -1,4 +1,8 @@
+
 .header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   position: fixed;
   top: 0;
   height:max-content;
@@ -7,6 +11,10 @@
   width: 100%;
   z-index: 12;
   box-sizing: border-box;
+  padding:1rem 2rem;
+}
+.header>div{
+  line-height: .7;
 }
 
 .logo{
@@ -21,6 +29,10 @@
   }
   .user{
     height: 40px;
+  }
+  .header{
+    height:min-content;
+    padding:1rem;
   }
 
 
