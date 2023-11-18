@@ -32,7 +32,6 @@ const MovieList = ({ genre, modal, setModal }) => {
     setModal({ id: params });
     setData(genre.films);
   }
-  // console.log(genre);
 
   return (
     <section style={{ color: '#fff' }} className={styles.section}>

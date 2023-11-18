@@ -23,7 +23,8 @@ const Banner = ({ data, setLoading }) => {
           !emphasisMoviesArray.some(
             (item) => item.movie.name === selectedFilm.name,
           ) &&
-          !usedIds.includes(selectedFilm.id)
+          !usedIds.includes(selectedFilm.id) &&
+          selectedFilm.overview.length > 0
         ) {
           setLoading(true);
           emphasisMoviesArray.push({
@@ -44,7 +45,7 @@ const Banner = ({ data, setLoading }) => {
 
     const timeSlide = setInterval(() => {
       setSlideIndex((slideIndex) => (slideIndex < 6 ? slideIndex + 1 : 0));
-    }, 5000);
+    }, 3000);
     return () => clearInterval(timeSlide);
   }, [data]);
 

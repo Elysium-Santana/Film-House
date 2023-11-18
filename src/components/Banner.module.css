@@ -134,7 +134,7 @@
   display: block;
   background: rgba(255, 255, 255, 0.7);
   transform: translate(-100%) ; 
-  animation: animeStatusBar 5s forwards linear; 
+  animation: animeStatusBar 3s forwards linear; 
 }
 
 

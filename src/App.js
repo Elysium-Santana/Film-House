@@ -19,7 +19,7 @@ function App() {
   useEffect(() => {
     async function getAllFilms() {
       setLoading(true);
-      const getAll = await getFilms(1);
+      const getAll = await getFilms(10);
       setData(getAll);
       setLoading(null);
       return getAll;
